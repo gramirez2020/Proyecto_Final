@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SILOE COLOMBIA</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <style>
+    :root {
+      --primary-color: #2A6DB0;
+      --secondary-color: #3AB795;
+      --accent-color: #FF6B6B;
+      --light-bg: #F8FDFF;
+      --card-bg: #FFFFFF;
+      --text-dark: #2C3E50;
+      --text-light: #7F8C8D;
+    }
+    
+    body {
+      padding-top: 80px;
+      background: linear-gradient(135deg, #E0F7FF 0%, #F0FAFF 100%) !important;
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+    
+    .navbar {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      color: var(--primary-color) !important;
+      font-size: 1.5rem;
+    }
+    
+    .section-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .card {
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+      background: var(--card-bg);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-header {
+      background: linear-gradient(135deg, var(--primary-color), #3A7BC8);
+      color: white;
+      border: none;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    
+    .card-body {
+      padding: 2rem;
+    }
+    
+    .btn {
+      border-radius: 50px;
+      padding: 0.75rem 2rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-color), #3A7BC8);
+      box-shadow: 0 4px 15px rgba(42, 109, 176, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(42, 109, 176, 0.4);
+    }
+    
+    .btn-success {
+      background: linear-gradient(135deg, var(--secondary-color), #4AC8A3);
+      box-shadow: 0 4px 15px rgba(58, 183, 149, 0.3);
+    }
+    
+    .btn-success:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(58, 183, 149, 0.4);
+    }
+    
+    .btn-info {
+      background: linear-gradient(135deg, #17A2B8, #2BBBD8);
+      box-shadow: 0 4px 15px rgba(23, 162, 184, 0.3);
+      color: white;
+    }
+    
+    .btn-info:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(23, 162, 184, 0.4);
+      color: white;
+    }
+    
+    .btn-danger {
+      background: linear-gradient(135deg, var(--accent-color), #FF8E8E);
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    }
+    
+    .btn-danger:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    }
+    
+    .btn-outline-primary {
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+      background: transparent;
+    }
+    
+    .btn-outline-primary:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    .form-control, .form-select {
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      border: 1px solid #E1E8ED;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus, .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(42, 109, 176, 0.2);
+    }
+    
+    h1, h2, h3, h4, h5 {
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+    
+    .welcome-section {
+      padding: 4rem 0;
+      text-align: center;
+    }
+    
+    .welcome-icon {
+      font-size: 4rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+    }
+    
+    .lead {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+    
+    .alert-fixed-top {
+      position: fixed;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1050;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      border: none;
+    }
+    
+    .badge {
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      font-weight: 500;
+    }
+    
+    .cita-card {
+      border-left: 4px solid var(--primary-color);
+      transition: all 0.3s ease;
+    }
+    
+    .cita-card:hover {
+      border-left-color: var(--secondary-color);
+    }
+    
+    .menu-option {
+      padding: 2rem;
+      text-align: center;
+      border-radius: 16px;
+      background: white;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .menu-option:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .menu-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    
+    .footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      padding: 1.5rem;
+    }
+    
+    .logo-text {
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .section-title {
+      position: relative;
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding-top: 70px;
+      }
+      
+      .card-body {
+        padding: 1.5rem;
+      }
+      
+      .btn {
+        padding: 0.65rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="generalAlertContainer"></div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top d-none" id="navbar">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">
+      <i class="bi bi-eye-fill me-2"></i>
+      <span class="logo-text">SILOE COLOMBIA</span>
+    </a>
+    <button class="btn btn-outline-danger ms-auto" onclick="irA('confirmarSalida')">
+      <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
+    </button>
+  </div>
+</nav>
+
+<section class="container text-center welcome-section" id="bienvenida">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="welcome-icon">
+        <i class="bi bi-eye-fill"></i>
+      </div>
+      <h1 class="display-4 fw-bold text-gradient mb-4">Bienvenido a Siloe Colombia</h1>
+      <p class="lead">Tu visión, nuestra misión.</p>
+      <button class="btn btn-success btn-lg px-5" onclick="irA('login')">
+        <i class="bi bi-box-arrow-in-right me-2"></i>Ingresar
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="container d-none" id="login">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div id="loginAlertContainer" class="my-3"></div>
+      
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mb-0"><i class="bi bi-person-circle me-2"></i>Iniciar sesión</h4>
+        </div>
+        <div class="card-body">
+          <form onsubmit="iniciarSesion(); return false;">
+            <div class="mb-3">
+              <label for="logCorreo" class="form-label">Correo electrónico</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
+                <input type="email" id="logCorreo" class="form-control" placeholder="Correo" required value="gramirezalfonso@pruebasena.com"/>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="logContrasena" class="form-label">Contraseña</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light"><i class="bi bi-lock"></i></span>
+                <input type="password" id="logContrasena" class="form-control" placeholder="Contraseña" required value="gramirez123"/>
+              </div>
+            </div>
+            <div class="d-grid gap-2">
+              <button class="btn btn-success">
+                <i class="bi bi-box-arrow-in-right me-2"></i>Ingresar
+              </button>
+              <button type="button" class="btn btn-outline-primary" onclick="irA('registro')">
+                <i class="bi bi-person-plus me-2"></i>Registrar nuevo usuario
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container d-none" id="registro">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+       <div id="registroAlertContainer" class="my-3"></div>
+      
+      <div class="card">
+        <div class="card-header">
+          <h4 class="mb-0"><i class="bi bi-person-plus me-2"></i>Registro de Usuario</h4>
+        </div>
+        <div class="card-body">
+          <form onsubmit="registrarUsuario(); return false;">
+            <div class="mb-3">
+              <label for="regNombre" class="form-label">Nombre completo</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light"><i class="bi bi-person"></i></span>
+                <input type="text" id="regNombre" class="form-control" placeholder="Nombre completo" required />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="regCorreo" class="form-label">Correo electrónico</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light"><i class="bi bi-envelope"></i></span>
+                <input type="email" id="regCorreo" class="form-control" placeholder="Correo" required />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="regContrasena" class="form-label">Contraseña</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light"><i class="bi bi-lock"></i></span>
+                <input type="password" id="regContrasena" class="form-control" placeholder="Contraseña" required />
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="regRol" class="form-label">Tipo de usuario</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light"><i class="bi bi-person-badge"></i></span>
+                <select id="regRol" class="form-select" required>
+                  <option value="Paciente">Paciente</option>
+                  <option value="Optómetra">Optómetra</option>
+                </select>
+              </div>
+            </div>
+            <div class="d-grid">
+              <button class="btn btn-primary">
+                <i class="bi bi-person-plus me-2"></i>Registrarse
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container d-none" id="menu">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h3 class="text-center section-title">Menú Principal</h3>
+      <div class="row mt-4">
+        <div class="col-md-6 mb-4">
+          <div class="menu-option h-100" onclick="irA('agendar')">
+            <div class="menu-icon">
+              <i class="bi bi-calendar-plus"></i>
+            </div>
+            <h5>Agendar Cita</h5>
+            <p class="text-muted">Solicita una nueva cita con nuestros especialistas</p>
+            <button class="btn btn-info mt-2">Seleccionar</button>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="menu-option h-100" onclick="irA('cancelar')">
+            <div class="menu-icon">
+              <i class="bi bi-calendar-x"></i>
+            </div>
+            <h5>Cancelar / Reagendar Cita</h5>
+            <p class="text-muted">Modifica o cancela tus citas existentes</p>
+            <button class="btn btn-info mt-2">Seleccionar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container d-none" id="agendar">
+  <div class="section-container">
+    <h4 class="text-center section-title">Agendar Cita</h4>
+    <div id="agendarAlertContainer" class="my-3"></div> 
+    
+    <div class="card">
+      <div class="card-body">
+        <form onsubmit="agendarCita(); return false;">
+          <div class="mb-3">
+            <label for="citaFecha" class="form-label">Fecha de la cita</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="bi bi-calendar"></i></span>
+              <input type="date" class="form-control" required id="citaFecha" />
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="citaHora" class="form-label">Hora de la cita</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="bi bi-clock"></i></span>
+              <input type="time" class="form-control" required id="citaHora" list="horariosDisponibles" />
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="optometro" class="form-label">Optómetra</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="bi bi-person-badge"></i></span>
+              <select class="form-select" required id="optometro">
+                <option value="" disabled selected>Cargando Optómetras...</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <label for="motivoCita" class="form-label">Motivo de la cita</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light"><i class="bi bi-clipboard"></i></span>
+              <select class="form-select" required id="motivoCita">
+                <option value="" disabled selected>Seleccione el motivo de la cita</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="d-grid">
+            <button class="btn btn-success">
+              <i class="bi bi-check-circle me-2"></i>Confirmar Cita
+            </button>
+          </div>
+        </form>
+        
+        <div class="text-center mt-3">
+          <button class="btn btn-link" onclick="irA('menu')">
+            <i class="bi bi-arrow-left me-1"></i>Volver al menú
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <datalist id="horariosDisponibles">
+      <option value="08:00">
+      <option value="08:30">
+      <option value="09:00">
+      <option value="09:30">
+      <option value="10:00">
+      <option value="10:30">
+      <option value="11:00">
+      <option value="11:30">
+      <option value="12:00">
+      <option value="12:30">
+      <option value="13:00">
+      <option value="13:30">
+      <option value="14:00">
+      <option value="14:30">
+      <option value="15:00">
+      <option value="15:30">
+      <option value="16:00">
+      <option value="16:30">
+      <option value="17:00">
+    </datalist>
+  </div>
+</section>
+
+<section class="container d-none" id="cancelar">
+  <div class="section-container">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="mb-0"><i class="bi bi-calendar-x me-2"></i>Cancelar / Reagendar Cita</h4>
+      </div>
+      <div class="card-body">
+        <div id="alertaCancelacionContainer"></div>
+        
+        <div id="listaCitas" class="d-grid gap-3">
+          <p class="text-center text-muted">Cargando citas...</p>
+        </div>
+
+        <div class="card mt-4 d-none" id="formReagendar">
+          <div class="card-body">
+            <h6 class="text-primary">
+              <i class="bi bi-calendar-event me-2"></i>Reagendar Cita 
+              <span id="reagendarCitaIdDisplay" class="text-muted small"></span>
+            </h6>
+            <div id="reagendarAlertContainer" class="my-3"></div>
+            <form onsubmit="reagendarCita(); return false;">
+              <div class="mb-3">
+                <label for="regFecha" class="form-label">Nueva fecha</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light"><i class="bi bi-calendar"></i></span>
+                  <input type="date" class="form-control" required id="regFecha" />
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="regHora" class="form-label">Nueva hora</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light"><i class="bi bi-clock"></i></span>
+                  <input type="time" class="form-control" required id="regHora" list="horariosDisponibles"/>
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="regOptometro" class="form-label">Optómetra</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light"><i class="bi bi-person-badge"></i></span>
+                  <select class="form-select" required id="regOptometro">
+                    <option value="" disabled selected>Cargando Optómetras...</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <label for="regMotivoCita" class="form-label">Motivo de la cita</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light"><i class="bi bi-clipboard"></i></span>
+                  <select class="form-select" required id="regMotivoCita">
+                    <option value="" disabled selected>Seleccione el motivo de la cita</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="d-grid">
+                <button class="btn btn-success">
+                  <i class="bi bi-check-circle me-2"></i>Guardar cambios
+                </button>
+              </div>
+            </form>
+            <div class="text-center mt-2">
+              <button class="btn btn-link" onclick="ocultarReagendarForm()">
+                <i class="bi bi-x-circle me-1"></i>Cancelar Reagendamiento
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <button class="btn btn-outline-primary me-2" onclick="irA('menu')">
+            <i class="bi bi-arrow-left me-1"></i>Volver al menú
+          </button>
+          <button class="btn btn-outline-danger" onclick="irA('confirmarSalida')">
+            <i class="bi bi-box-arrow-right me-1"></i>Cerrar sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container d-none" id="confirmarCancelacion">
+  <div class="section-container">
+    <div class="card">
+      <div class="card-body text-center py-5">
+        <div class="mb-4">
+          <i class="bi bi-exclamation-triangle text-warning" style="font-size: 3rem;"></i>
+        </div>
+        <h4 class="text-warning">¿Estás seguro de que deseas cancelar esta cita?</h4>
+        <p class="text-dark fw-bold mt-3" id="detalleCitaACancelar"></p>
+        <div class="d-flex justify-content-center mt-4 gap-3">
+          <button class="btn btn-danger px-4" onclick="ejecutarCancelacion()">
+            <i class="bi bi-check-circle me-2"></i>Sí, cancelar
+          </button>
+          <button class="btn btn-secondary px-4" onclick="irA('cancelar')">
+            <i class="bi bi-x-circle me-2"></i>No, volver
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container d-none" id="confirmarSalida">
+  <div class="section-container">
+    <div class="card">
+      <div class="card-body text-center py-5">
+        <div class="mb-4">
+          <i class="bi bi-question-circle text-warning" style="font-size: 3rem;"></i>
+        </div>
+        <h4 class="text-warning">¿Estás seguro de que deseas cerrar sesión?</h4>
+        <div class="d-flex justify-content-center mt-4 gap-3">
+          <button class="btn btn-danger px-4" onclick="cerrarSesion()">
+            <i class="bi bi-box-arrow-right me-2"></i>Sí, cerrar sesión
+          </button>
+          <button class="btn btn-secondary px-4" onclick="irA('menu')">
+            <i class="bi bi-arrow-left me-2"></i>No, volver al menú
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="container">
+    <p class="mb-0">© 2025 SILOE COLOMBIA - Tu visión, nuestra misión</p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- El resto del código JavaScript permanece exactamente igual -->
+<script>
+  // Variable global para almacenar los datos del usuario logueado (incluyendo el ID)
+  let usuarioLogueado = null;
+  // Almacena el ID de la cita que el usuario está a punto de cancelar
+  let citaIdACancelar = null;
+  // Almacena el ID de la cita que el usuario está a punto de reagendar
+  let citaIdAReagendar = null; 
+
+  // ************************************
+  // *** FUNCIÓN AUXILIAR PARA ALERTAS **
+  // ************************************
+  function mostrarAlerta(containerId, message, type) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    // Limpiar alertas anteriores
+    container.innerHTML = ''; 
+
+    // Crear el elemento de alerta
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `alert alert-${type} alert-dismissible fade show text-center`;
+    alertDiv.role = 'alert';
+    alertDiv.innerHTML = `
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+
+    container.appendChild(alertDiv);
+
+    // Ocultar automáticamente después de 4 segundos
+    setTimeout(() => {
+        const bsAlert = new bootstrap.Alert(alertDiv);
+        bsAlert.close();
+    }, 4000);
+  }
+
+  // ************************************
+  // *** FUNCIÓN PARA CARGAR MOTIVOS DE CITA ***
+  // ************************************
+  function cargarMotivosCita() {
+      const motivos = [
+          "Examen visual de rutina y control general",
+          "Visión borrosa o dificultad para enfocar (prescripción de lentes)",
+          "Dolor, enrojecimiento, irritación o sensación de cuerpo extraño",
+          "Dolores de cabeza o fatiga visual por esfuerzo"
+      ];
+
+      const select = document.getElementById('motivoCita');
+      select.innerHTML = '<option value="" disabled selected>Seleccione el motivo de la cita</option>';
+
+      motivos.forEach(motivo => {
+          const option = document.createElement('option');
+          option.value = motivo; 
+          option.textContent = motivo;
+          select.appendChild(option);
+      });
+  }
+  
+  // Función para cargar motivos de cita en el formulario de reagendar
+  function cargarMotivosCitaReagendar() {
+      const motivos = [
+          "Examen visual de rutina y control general",
+          "Visión borrosa o dificultad para enfocar (prescripción de lentes)",
+          "Dolor, enrojecimiento, irritación o sensación de cuerpo extraño",
+          "Dolores de cabeza o fatiga visual por esfuerzo"
+      ];
+
+      const select = document.getElementById('regMotivoCita');
+      select.innerHTML = '<option value="" disabled selected>Seleccione el motivo de la cita</option>';
+
+      motivos.forEach(motivo => {
+          const option = document.createElement('option');
+          option.value = motivo; 
+          option.textContent = motivo;
+          select.appendChild(option);
+      });
+  }
+
+  // ************************************
+  // *** FUNCIÓN PARA CARGAR OPTÓMETRAS ***
+  // ************************************
+  async function cargarOptometras() {
+      const select = document.getElementById('optometro');
+      
+      select.innerHTML = '<option value="" disabled selected>Cargando Optómetras...</option>';
+
+      try {
+          const response = await fetch('http://localhost:3000/api/users'); 
+          
+          if (!response.ok) {
+              const errorText = `Error (${response.status} ${response.statusText}): No se pudieron cargar los Optómetras.`;
+              mostrarAlerta('agendarAlertContainer', errorText, 'danger');
+              select.innerHTML = '<option value="" disabled selected>Error de carga</option>';
+              return;
+          }
+
+          const users = await response.json();
+          const optometras = users.filter(user => user.rol === 'Optómetra'); 
+          
+          select.innerHTML = '<option value="" disabled selected>Seleccione un Optómetra</option>';
+          
+          if (optometras.length === 0) {
+              mostrarAlerta('agendarAlertContainer', 'No se encontraron Optómetras disponibles.', 'info');
+              select.innerHTML = '<option value="" disabled selected>No hay Optómetras</option>';
+              return;
+          }
+
+          optometras.forEach(optometra => {
+              const option = document.createElement('option');
+              option.value = optometra.id_usuario; 
+              option.textContent = optometra.nombre;
+              select.appendChild(option);
+          });
+
+      } catch (error) {
+          mostrarAlerta('agendarAlertContainer', 'Error de red: No se pudo conectar con el servidor.', 'danger');
+          select.innerHTML = '<option value="" disabled selected>Error de red</option>';
+          console.error('Error cargando Optómetras:', error);
+      }
+  }
+
+  // Función para cargar optómetras en el formulario de reagendar
+  async function cargarOptometrasReagendar() {
+      const select = document.getElementById('regOptometro');
+      
+      select.innerHTML = '<option value="" disabled selected>Cargando Optómetras...</option>';
+
+      try {
+          const response = await fetch('http://localhost:3000/api/users'); 
+          
+          if (!response.ok) {
+              const errorText = `Error (${response.status} ${response.statusText}): No se pudieron cargar los Optómetras.`;
+              mostrarAlerta('reagendarAlertContainer', errorText, 'danger');
+              select.innerHTML = '<option value="" disabled selected>Error de carga</option>';
+              return;
+          }
+
+          const users = await response.json();
+          const optometras = users.filter(user => user.rol === 'Optómetra'); 
+          
+          select.innerHTML = '<option value="" disabled selected>Seleccione un Optómetra</option>';
+          
+          if (optometras.length === 0) {
+              mostrarAlerta('reagendarAlertContainer', 'No se encontraron Optómetras disponibles.', 'info');
+              select.innerHTML = '<option value="" disabled selected>No hay Optómetras</option>';
+              return;
+          }
+
+          optometras.forEach(optometra => {
+              const option = document.createElement('option');
+              option.value = optometra.id_usuario; 
+              option.textContent = optometra.nombre;
+              select.appendChild(option);
+          });
+
+      } catch (error) {
+          mostrarAlerta('reagendarAlertContainer', 'Error de red: No se pudo conectar con el servidor.', 'danger');
+          select.innerHTML = '<option value="" disabled selected>Error de red</option>';
+          console.error('Error cargando Optómetras para reagendar:', error);
+      }
+  }
+
+  // ************************************
+  // *** FUNCIÓN PARA AGENDAR CITA **
+  // ************************************
+  async function agendarCita() {
+      const agendarAlertContainer = 'agendarAlertContainer';
+      
+      if (!usuarioLogueado || !usuarioLogueado.id) {
+          mostrarAlerta(agendarAlertContainer, 'Error: Debe iniciar sesión para agendar una cita. Vuelva a iniciar sesión.', 'danger');
+          irA('login');
+          return;
+      }
+
+      const fecha = document.getElementById('citaFecha').value;
+      const hora = document.getElementById('citaHora').value;
+      const selectOptometro = document.getElementById('optometro');
+      const selectMotivo = document.getElementById('motivoCita');
+      
+      const id_medico_str = selectOptometro.value;
+      const motivo = selectMotivo.value;
+      const id_usuario = usuarioLogueado.id;
+
+      // Validación de campos obligatorios
+      if (!fecha || fecha === '') {
+          mostrarAlerta(agendarAlertContainer, 'Por favor, ingrese una fecha para la cita.', 'danger');
+          return;
+      }
+      if (!hora || hora === '') {
+          mostrarAlerta(agendarAlertContainer, 'Por favor, ingrese una hora para la cita.', 'danger');
+          return;
+      }
+      if (!id_medico_str || id_medico_str === '' || selectOptometro.selectedIndex === 0) {
+          mostrarAlerta(agendarAlertContainer, 'Por favor, seleccione un Optómetra de la lista.', 'danger');
+          return;
+      }
+      if (!motivo || motivo === '' || selectMotivo.selectedIndex === 0) {
+          mostrarAlerta(agendarAlertContainer, 'Por favor, seleccione el motivo de la cita.', 'danger');
+          return;
+      }
+
+      // Validación de NaN: Conversión a número y verificación
+      const id_medico = parseInt(id_medico_str);
+      if (isNaN(id_medico)) {
+          mostrarAlerta(agendarAlertContainer, 'Error de formato: El ID del Optómetra seleccionado no es un número. Recargue la página.', 'danger');
+          return;
+      }
+
+      const datosCita = {
+          id_medico: id_medico, 
+          id_usuario: id_usuario,
+          fecha: fecha,
+          hora: hora + ':00', 
+          motivo: motivo
+      };
+
+      try {
+          const response = await fetch('http://localhost:3000/api/citas', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(datosCita)
+          });
+
+          if (response.ok) {
+              const data = await response.json();
+              irA('menu'); 
+              mostrarAlerta('generalAlertContainer', 'Cita agendada con éxito.', 'success');
+          } else {
+              const errorData = await response.json().catch(() => ({ error: 'Error desconocido' }));
+              const errorMsg = `Error al registrar cita: ${errorData.error || errorData.message || 'Error del servidor al procesar la cita.'}`;
+              mostrarAlerta(agendarAlertContainer, errorMsg, 'danger');
+          }
+      } catch (error) {
+          mostrarAlerta(agendarAlertContainer, 'Error de red al registrar la cita. Verifique la conexión con el servidor.', 'danger');
+          console.error('Error de red al registrar la cita:', error);
+      }
+  }
+  
+  // ************************************
+  // *** FUNCIÓN PARA CARGAR CITAS DEL USUARIO **
+  // ************************************
+  async function cargarCitasUsuario() {
+      const listaCitasContainer = document.getElementById('listaCitas');
+      listaCitasContainer.innerHTML = '<p class="text-center text-primary">Cargando tus citas...</p>';
+
+      if (!usuarioLogueado || !usuarioLogueado.id) {
+          listaCitasContainer.innerHTML = '<p class="text-center text-danger">Error: No se encontró un ID de usuario logueado.</p>';
+          return;
+      }
+
+      const id_usuario = usuarioLogueado.id;
+
+      try {
+          const response = await fetch(`http://localhost:3000/api/citas/user/${id_usuario}`);
+          
+          if (response.status === 404) {
+              listaCitasContainer.innerHTML = '<p class="text-center text-muted">No tienes citas agendadas actualmente.</p>';
+              return;
+          }
+
+          if (!response.ok) {
+              const errorData = await response.json().catch(() => ({ error: 'Error desconocido' }));
+              listaCitasContainer.innerHTML = `<p class="text-center text-danger">Error al cargar citas: ${errorData.error || 'Error del servidor.'}</p>`;
+              return;
+          }
+
+          const citas = await response.json();
+          renderizarCitas(citas);
+
+      } catch (error) {
+          listaCitasContainer.innerHTML = '<p class="text-center text-danger">Error de red: No se pudo conectar con el servidor.</p>';
+          console.error('Error de red al obtener citas:', error);
+      }
+  }
+
+  // ************************************
+  // *** FUNCIÓN PARA RENDERIZAR CITAS EN EL HTML **
+  // ************************************
+  function renderizarCitas(citas) {
+      const listaCitasContainer = document.getElementById('listaCitas');
+      listaCitasContainer.innerHTML = '';
+      listaCitasContainer.classList.remove("d-none");
+
+      if (citas.length === 0) {
+          listaCitasContainer.innerHTML = '<p class="text-center text-muted">No tienes citas agendadas actualmente.</p>';
+          return;
+      }
+      
+      citas.forEach(cita => {
+          const estadoVisual = 'Pendiente';
+          const estadoClase = 'bg-warning text-dark';
+          const estadoIcono = '⏳';
+          
+          const fechaFormateada = new Date(cita.fecha).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' });
+          
+          const citaCard = `
+              <div class="card shadow-sm border-0 cita-card">
+                  <div class="card-body">
+                      <div class="d-flex justify-content-between align-items-start">
+                          <h5 class="card-title text-primary"><i class="bi bi-person-badge me-2"></i>Cita con ${cita.nombre_medico}</h5>
+                          <span class="badge ${estadoClase} rounded-pill p-2">${estadoIcono} ${estadoVisual}</span>
+                      </div>
+                      <p class="card-text mb-1">
+                          <i class="bi bi-calendar me-1"></i> Fecha: <strong>${fechaFormateada}</strong><br>
+                          <i class="bi bi-clock me-1"></i> Hora: <strong>${cita.hora.substring(0, 5)}</strong>
+                          <small class="text-muted d-block"><i class="bi bi-tag me-1"></i>ID de Cita: ${cita.id}</small>
+                      </p>
+                      <p class="card-text text-muted small"><i class="bi bi-clipboard me-1"></i> Motivo: ${cita.motivo}</p>
+                      
+                      <div class="d-flex gap-2 mt-3">
+                          <button class="btn btn-danger btn-sm" onclick="irA('confirmarCancelacion', ${cita.id})">
+                            <i class="bi bi-x-circle me-1"></i>Cancelar
+                          </button>
+                          <button class="btn btn-outline-primary btn-sm" onclick="mostrarReagendar(${cita.id})">
+                            <i class="bi bi-arrow-clockwise me-1"></i>Reagendar
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          `;
+          listaCitasContainer.innerHTML += citaCard;
+      });
+  }
+
+  // ************************************
+  // *** FUNCIÓN PARA EJECUTAR CANCELACIÓN (API CALL) **
+  // ************************************
+  async function ejecutarCancelacion() {
+    if (citaIdACancelar === null) {
+        mostrarAlerta('generalAlertContainer', 'Error: No se ha seleccionado ninguna cita para cancelar.', 'danger');
+        irA('cancelar');
+        return;
+    }
+
+    const idCita = citaIdACancelar;
+    document.getElementById('detalleCitaACancelar').textContent = 'Cancelando cita...';
+
+    try {
+        const response = await fetch(`http://localhost:3000/api/citas/cancelar/${idCita}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (response.ok) {
+            citaIdACancelar = null;
+            console.log(`Cita ID ${idCita} cancelada.`);
+            irA('cancelar');
+			            mostrarAlerta('generalAlertContainer', 'Cita cancelada con éxito.', 'success');
+        } else {
+            const errorData = await response.json().catch(() => ({ error: 'Error desconocido al cancelar.' }));
+            const errorMsg = `Error al cancelar cita: ${errorData.error || errorData.message || 'Error del servidor.'}`;
+            mostrarAlerta('generalAlertContainer', errorMsg, 'danger');
+            irA('cancelar');
+        }
+
+    } catch (error) {
+        mostrarAlerta('generalAlertContainer', 'Error de red: No se pudo conectar con el servidor para cancelar la cita.', 'danger');
+        console.error('Error de red al cancelar la cita:', error);
+        irA('cancelar');
+    }
+  }
+
+  // ************************************
+  // *** FUNCIÓN PARA REAGENDAR CITA ***
+  // ************************************
+  async function reagendarCita() {
+      const reagendarAlertContainer = 'reagendarAlertContainer';
+      const idCita = citaIdAReagendar;
+
+      if (idCita === null) {
+          mostrarAlerta(reagendarAlertContainer, 'Error: No se ha seleccionado una cita válida para reagendar.', 'danger');
+          return;
+      }
+
+      // 1. Capturar y validar campos
+      const fecha = document.getElementById('regFecha').value;
+      const hora = document.getElementById('regHora').value;
+      const selectOptometro = document.getElementById('regOptometro');
+      const selectMotivo = document.getElementById('regMotivoCita');
+
+      const id_medico_str = selectOptometro.value;
+      const motivo = selectMotivo.value;
+
+      if (!fecha || !hora || !id_medico_str || !motivo || selectOptometro.selectedIndex === 0 || selectMotivo.selectedIndex === 0) {
+          mostrarAlerta(reagendarAlertContainer, 'Por favor, complete todos los campos (Fecha, Hora, Optómetra y Motivo).', 'danger');
+          return;
+      }
+      
+      const id_medico = parseInt(id_medico_str);
+      if (isNaN(id_medico)) {
+          mostrarAlerta(reagendarAlertContainer, 'Error de formato: El ID del Optómetra seleccionado no es un número. Recargue la página.', 'danger');
+          return;
+      }
+
+      try {
+          // PRIMERO: Cancelar la cita vieja usando la API existente
+          const responseCancelar = await fetch(`http://localhost:3000/api/citas/cancelar/${idCita}`, {
+              method: 'PUT'
+          });
+
+          if (responseCancelar.ok) {
+			  mostrarAlerta('generalAlertContainer', 'Cita cancelada exitosamente.', 'success');
+              cargarCitasUsuario();
+          }
+		  else {const errorData = await responseCancelar.json().catch(() => ({ error: 'Error desconocido' }));
+              throw new Error(errorData.error || 'Error al cancelar la cita anterior');}
+
+          // SEGUNDO: Crear una NUEVA cita con los datos actualizados usando la API existente
+          const datosNuevaCita = {
+              id_medico: id_medico, 
+              id_usuario: usuarioLogueado.id,
+              fecha: fecha,
+              hora: hora + ':00', 
+              motivo: motivo
+          };
+
+          const responseNuevaCita = await fetch('http://localhost:3000/api/citas', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(datosNuevaCita)
+          });
+
+          if (responseNuevaCita.ok) {
+              mostrarAlerta('generalAlertContainer', 'Cita reagendada exitosamente.', 'success');
+              ocultarReagendarForm();
+              cargarCitasUsuario();
+          } else {
+              const errorData = await responseNuevaCita.json().catch(() => ({ error: 'Error desconocido' }));
+              throw new Error(errorData.error || 'Error al crear la nueva cita');
+          }
+
+      } catch (error) {
+          mostrarAlerta(reagendarAlertContainer, `Error: ${error.message}`, 'danger');
+          console.error('Error en el proceso de reagendamiento:', error);
+      }
+  }
+
+  // ************************************
+  // *** FUNCIONES DE NAVEGACIÓN Y OTROS **
+  // ************************************
+  function irA(seccion, extraId = null) {
+    document.querySelectorAll('section').forEach(s => s.classList.add('d-none'));
+    document.getElementById(seccion).classList.remove('d-none');
+    document.getElementById('navbar').classList.toggle('d-none', ['login', 'registro', 'bienvenida'].includes(seccion));
+    
+    document.getElementById('generalAlertContainer').innerHTML = '';
+
+    if (seccion === 'agendar') {
+        cargarOptometras();
+        cargarMotivosCita();
+    }
+
+    if (seccion === 'cancelar') {
+        ocultarReagendarForm();
+        cargarCitasUsuario();
+    }
+    
+    if (seccion === 'confirmarCancelacion' && extraId !== null) {
+        citaIdACancelar = extraId;
+        document.getElementById('detalleCitaACancelar').textContent = `ID de Cita: ${citaIdACancelar}`;
+    }
+  }
+
+  function cerrarSesion() {
+    usuarioLogueado = null;
+    irA('bienvenida');
+    mostrarAlerta('generalAlertContainer', 'Has cerrado sesión exitosamente.', 'info');
+  }
+
+  function mostrarReagendar(citaId) {
+      document.getElementById("listaCitas").classList.add("d-none");
+      citaIdAReagendar = citaId; 
+      document.getElementById("reagendarCitaIdDisplay").textContent = `(ID: ${citaId})`;
+      document.getElementById("formReagendar").classList.remove("d-none");
+      cargarOptometrasReagendar(); 
+      cargarMotivosCitaReagendar(); 
+  }
+  
+  function ocultarReagendarForm() {
+      citaIdAReagendar = null; 
+      document.getElementById("formReagendar").classList.add("d-none");
+      document.getElementById("listaCitas").classList.remove("d-none");
+      document.getElementById("reagendarAlertContainer").innerHTML = '';
+  }
+  
+  // ************************************
+  // *** FUNCIÓN DE INICIO DE SESIÓN ****
+  // ************************************
+  async function iniciarSesion() {
+    const correo = document.getElementById('logCorreo').value;
+    const contrasena = document.getElementById('logContrasena').value;
+
+    const datosLogin = {
+        correo: correo,
+        contraseña: contrasena 
+    };
+
+    try {
+        const response = await fetch('http://localhost:3000/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(datosLogin)
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            usuarioLogueado = data.user; 
+            mostrarAlerta('generalAlertContainer', data.message, 'success');
+            irA('menu'); 
+        } else if (response.status === 401) {
+            const errorData = await response.json().catch(() => ({ error: 'Credenciales inválidas o formato incorrecto.' }));
+            mostrarAlerta('loginAlertContainer', `Error: ${errorData.error || response.statusText}`, 'danger');
+        } 
+        else {
+            const errorData = await response.json().catch(() => ({ message: 'Error desconocido' }));
+            mostrarAlerta('loginAlertContainer', `Error al iniciar sesión: ${errorData.message || response.statusText}`, 'danger');
+        }
+    } catch (error) {
+        mostrarAlerta('loginAlertContainer', 'Error al conectar con el servidor. Asegúrate de que esté encendido.', 'danger');
+    }
+  }
+
+  // ************************************
+  // *** FUNCIÓN DE REGISTRO ************
+  // ************************************
+  async function registrarUsuario() {
+    const nombre = document.getElementById('regNombre').value;
+    const correo = document.getElementById('regCorreo').value;
+    const contrasena = document.getElementById('regContrasena').value;
+    const rol = document.getElementById('regRol').value;
+
+    const datosRegistro = {
+        nombre: nombre,
+        correo: correo,
+        contraseña: contrasena, 
+        rol: rol
+    };
+
+    try {
+        const response = await fetch('http://localhost:3000/api/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(datosRegistro)
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            mostrarAlerta('generalAlertContainer', '¡Registro exitoso! Ya puedes iniciar sesión.', 'success');
+            irA('login'); 
+        } else {
+            const errorData = await response.json().catch(() => ({ message: 'Error desconocido' }));
+            mostrarAlerta('registroAlertContainer', `Error en el registro: ${errorData.message || response.statusText}`, 'danger');
+        }
+    } catch (error) {
+        mostrarAlerta('registroAlertContainer', 'Error al conectar con el servidor. Asegúrate de que esté encendido.', 'danger');
+    }
+  }
+
+  // Al cargar, mostrar bienvenida
+  irA('bienvenida');
+</script>
+
+</body>
+</html>
